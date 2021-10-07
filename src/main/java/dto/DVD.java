@@ -12,11 +12,11 @@ public class DVD {
     private String studio;
     private UserRating userRating;
 
-    public DVD(){
+    public DVD() {
 
     }
 
-    public DVD(String title, String director, String studio, String mpaaRating, int releaseDateDay, int releaseDateMonth, int releaseDateYear, int userRating, String ratingNote){
+    public DVD(String title, String director, String studio, String mpaaRating, int releaseDateDay, int releaseDateMonth, int releaseDateYear, int userRating, String ratingNote) {
         this.title = title;
         this.releaseDate = LocalDate.of(releaseDateYear, releaseDateMonth, releaseDateDay);
         this.mpaaRating = mpaaRating;
@@ -37,8 +37,8 @@ public class DVD {
         return releaseDate;
     }
 
-    public String getReleaseDateString(){
-        return releaseDate.getDayOfMonth() + "/" + releaseDate.getMonthValue()  + "/" + releaseDate.getYear();
+    public String getReleaseDateString() {
+        return releaseDate.getDayOfMonth() + "/" + releaseDate.getMonthValue() + "/" + releaseDate.getYear();
     }
 
     public void setReleaseDate(int day, int month, int year) {
