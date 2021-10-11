@@ -37,10 +37,6 @@ public class DVD {
         return releaseDate;
     }
 
-    public String getReleaseDateString() {
-        return releaseDate.getDayOfMonth() + "/" + releaseDate.getMonthValue() + "/" + releaseDate.getYear();
-    }
-
     public void setReleaseDate(int day, int month, int year) {
         this.releaseDate = LocalDate.of(year, month, day);
     }
@@ -73,7 +69,7 @@ public class DVD {
         return userRating;
     }
 
-    public void setUserRating(int rating, String note) {
-        this.userRating = new UserRating(rating, note);
-    }
+    public void setUserRating(int rating) { this.userRating.setRating(rating); }
+
+    public void setUserRatingNote(String note){ this.userRating.setNote(note); }
 }
