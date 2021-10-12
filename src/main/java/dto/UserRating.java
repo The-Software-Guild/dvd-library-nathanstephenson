@@ -3,7 +3,7 @@ package dto;
 public class UserRating {
 
     private int rating;
-    private String note = null;
+    private String note = "";
 
     public UserRating() {
 
@@ -39,12 +39,12 @@ public class UserRating {
     }
 
     public String toString() {
-        if (rating != 0 && note != null) {
-            return rating + "/5 : " + note;
-        } else if (rating == 0 && note != null) {
+        if (rating != 0 && !note.isEmpty()) {
+            return rating + "/10 - " + note;
+        } else if (rating == 0 && !note.isEmpty()) {
             return note;
         } else if (rating != 0) {
-            return rating + "/5";
-        } else return "No rating given.";
+            return rating + "/10";
+        } else return "No user rating given.";
     }
 }

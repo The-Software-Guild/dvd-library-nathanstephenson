@@ -92,7 +92,7 @@ public class DVDLibraryView {
         DVD dvd = library.get(io.readString("\nPlease enter the title of the DVD you wish to view the details of: "));
         io.print(dvd.getTitle() + " (Released " + dvd.getReleaseDate().getDayOfMonth() + "/" + dvd.getReleaseDate().getMonthValue() + "/" + dvd.getReleaseDate().getYear() + ") - Rated " + dvd.getMpaaRating() +
                 "\n=== Directed by " + dvd.getDirector() + ", Production by " + dvd.getStudio() +
-                "\n=== " + dvd.getUserRating().getRating() + "/10 - " + dvd.getUserRating().getNote());
+                "\n=== " + dvd.getUserRating());
     }
 
     public String getFilename() {
