@@ -12,7 +12,7 @@ public class DVDLibraryView {
         this.io = userIO;
     }
 
-    public int menu(){
+    public int menu() {
         io.print("---Main Menu---");
         io.print("1 - add DVD");
         io.print("2 - remove DVD");
@@ -24,7 +24,7 @@ public class DVDLibraryView {
         return io.readInt("Please enter the number of the option you select: ", 1, 7);
     }
 
-    public DVD addDVD(){
+    public DVD addDVD() {
         String title = io.readString("Please enter the title: ");
         String director = io.readString("Please enter the director's name: ");
         String studio = io.readString("Please enter the studio's name: ");
@@ -37,15 +37,15 @@ public class DVDLibraryView {
         return new DVD(title, director, studio, mpaa, releaseDay, releaseMonth, releaseYear, userRating, userNote);
     }
 
-    public String removeDVD(){
+    public String removeDVD() {
         return io.readString("Please enter the name of the DVD you wish to remove: ");
     }
 
-    public String editDVDGetTitle(){
+    public String editDVDGetTitle() {
         return io.readString("Please enter the title of the DVD you wish to edit: ");
     }
 
-    public DVD editDVD(String title, Map<String, DVD> library){
+    public DVD editDVD(String title, Map<String, DVD> library) {
         DVD dvd = library.get(title);
         io.print("Please choose which property to edit: ");
         io.print("1 - Title");
@@ -54,7 +54,7 @@ public class DVDLibraryView {
         io.print("4 - MPAA Rating");
         io.print("5 - Release Date");
         io.print("6 - Rating");
-        switch (io.readInt("Selection: ", 1, 6)){
+        switch (io.readInt("Selection: ", 1, 6)) {
             case 1:
                 dvd.setTitle(io.readString("Please enter the title: "));
                 break;
@@ -80,20 +80,20 @@ public class DVDLibraryView {
         return dvd;
     }
 
-    public void showLibrary(List<DVD> library){
-        for(DVD dvd : library){
+    public void showLibrary(List<DVD> library) {
+        for (DVD dvd : library) {
             io.print(dvd.getTitle() + " (" + dvd.getReleaseDate().getYear() + ") - " + dvd.getUserRating().getRating() + "/10");
         }
     }
 
-    public void showDVD(Map<String, DVD> library){
+    public void showDVD(Map<String, DVD> library) {
         DVD dvd = library.get(io.readString("Please enter the title of the DVD you wish to view the details of: "));
         io.print(dvd.getTitle() + " (" + dvd.getReleaseDate().getYear() + ") - " + dvd.getMpaaRating() +
                 "\n" + dvd.getDirector() + ", " + dvd.getStudio() + ", " +
                 "\n" + dvd.getUserRating().getRating() + "/10 - " + dvd.getUserRating().getNote());
     }
 
-    public String getFilename(){
+    public String getFilename() {
         return io.readString("Please enter the name of the file: ");
     }
 }
