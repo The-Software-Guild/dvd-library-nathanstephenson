@@ -13,7 +13,7 @@ public class DVDLibraryView {
     }
 
     public int menu() {
-        io.print("---Main Menu---");
+        io.print("\n---Main Menu---");
         io.print("1 - add DVD");
         io.print("2 - remove DVD");
         io.print("3 - edit DVD");
@@ -21,7 +21,8 @@ public class DVDLibraryView {
         io.print("5 - search DVDs");
         io.print("6 - load DVDs from file");
         io.print("7 - save DVDs to file");
-        return io.readInt("Please enter the number of the option you select: ", 1, 7);
+        io.print("0 - close program");
+        return io.readInt("Please enter the number of the option you select: ", 0, 7);
     }
 
     public DVD addDVD() {
@@ -38,11 +39,11 @@ public class DVDLibraryView {
     }
 
     public String removeDVD() {
-        return io.readString("Please enter the name of the DVD you wish to remove: ");
+        return io.readString("\nPlease enter the name of the DVD you wish to remove: ");
     }
 
     public String editDVDGetTitle() {
-        return io.readString("Please enter the title of the DVD you wish to edit: ");
+        return io.readString("\nPlease enter the title of the DVD you wish to edit: ");
     }
 
     public DVD editDVD(String title, Map<String, DVD> library) {
@@ -81,16 +82,17 @@ public class DVDLibraryView {
     }
 
     public void showLibrary(List<DVD> library) {
+        io.print("");
         for (DVD dvd : library) {
             io.print(dvd.getTitle() + " (" + dvd.getReleaseDate().getYear() + ") - " + dvd.getUserRating().getRating() + "/10");
         }
     }
 
     public void showDVD(Map<String, DVD> library) {
-        DVD dvd = library.get(io.readString("Please enter the title of the DVD you wish to view the details of: "));
-        io.print(dvd.getTitle() + " (" + dvd.getReleaseDate().getYear() + ") - " + dvd.getMpaaRating() +
-                "\n" + dvd.getDirector() + ", " + dvd.getStudio() + ", " +
-                "\n" + dvd.getUserRating().getRating() + "/10 - " + dvd.getUserRating().getNote());
+        DVD dvd = library.get(io.readString("\nPlease enter the title of the DVD you wish to view the details of: "));
+        io.print(dvd.getTitle() + " (Released " + dvd.getReleaseDate().getDayOfMonth() + "/" + dvd.getReleaseDate().getMonthValue() + "/" + dvd.getReleaseDate().getYear() + ") - Rated " + dvd.getMpaaRating() +
+                "\n=== Directed by " + dvd.getDirector() + ", Production by " + dvd.getStudio() +
+                "\n=== " + dvd.getUserRating().getRating() + "/10 - " + dvd.getUserRating().getNote());
     }
 
     public String getFilename() {
