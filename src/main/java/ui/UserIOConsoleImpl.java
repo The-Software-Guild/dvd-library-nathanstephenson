@@ -25,7 +25,7 @@ public class UserIOConsoleImpl implements UserIO{
         do {
             System.out.println(prompt);
             input = scanner.nextInt();
-            inRange = input > min && input < max;
+            inRange = input >= min && input <= max;
         } while (!inRange);
         return input;
     }
@@ -41,7 +41,7 @@ public class UserIOConsoleImpl implements UserIO{
         do {
             System.out.println(prompt);
             input = scanner.nextDouble();
-            inRange = input > min && input < max;
+            inRange = input >= min && input <= max;
         } while (!inRange);
         return input;
     }
@@ -57,7 +57,7 @@ public class UserIOConsoleImpl implements UserIO{
         do {
             System.out.println(prompt);
             input = scanner.nextFloat();
-            inRange = input > min && input < max;
+            inRange = input >= min && input <= max;
         } while (!inRange);
         return input;
     }
@@ -73,7 +73,7 @@ public class UserIOConsoleImpl implements UserIO{
         do {
             System.out.println(prompt);
             input = scanner.nextLong();
-            inRange = input > min && input < max;
+            inRange = input >= min && input <= max;
         } while (!inRange);
         return input;
     }
