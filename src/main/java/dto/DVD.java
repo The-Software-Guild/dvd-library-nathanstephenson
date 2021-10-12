@@ -10,7 +10,7 @@ public class DVD {
     private String mpaaRating;
     private String director;
     private String studio;
-    private UserRating userRating;
+    private UserRating userRating = new UserRating();
 
     public DVD() {
 
