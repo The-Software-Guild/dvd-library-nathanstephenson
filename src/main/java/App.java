@@ -16,7 +16,7 @@ public class App {
         try {
             controller.run();
         } catch(Exception e){
-            throw new DVDLibraryDaoException("Error: ", e);
+            throw new DVDLibraryDaoException("There was an error.", e);
         }
     }
 }
