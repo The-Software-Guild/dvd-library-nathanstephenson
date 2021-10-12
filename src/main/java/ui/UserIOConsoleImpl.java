@@ -16,7 +16,7 @@ public class UserIOConsoleImpl implements UserIO{
 
     public int readInt(String prompt) {
         System.out.println(prompt);
-        return scanner.nextInt();
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public int readInt(String prompt, int min, int max) {
@@ -24,7 +24,7 @@ public class UserIOConsoleImpl implements UserIO{
         int input;
         do {
             System.out.println(prompt);
-            input = scanner.nextInt();
+            input = Integer.parseInt(scanner.nextLine());
             inRange = input >= min && input <= max;
         } while (!inRange);
         return input;
@@ -32,7 +32,7 @@ public class UserIOConsoleImpl implements UserIO{
 
     public double readDouble(String prompt) {
         System.out.println(prompt);
-        return scanner.nextDouble();
+        return Double.parseDouble(scanner.nextLine());
     }
 
     public double readDouble(String prompt, double min, double max) {
@@ -40,7 +40,7 @@ public class UserIOConsoleImpl implements UserIO{
         double input;
         do {
             System.out.println(prompt);
-            input = scanner.nextDouble();
+            input = Double.parseDouble(scanner.nextLine());
             inRange = input >= min && input <= max;
         } while (!inRange);
         return input;
@@ -48,7 +48,7 @@ public class UserIOConsoleImpl implements UserIO{
 
     public float readFloat(String prompt) {
         System.out.println(prompt);
-        return scanner.nextFloat();
+        return Float.parseFloat(scanner.nextLine());
     }
 
     public float readFloat(String prompt, float min, float max) {
@@ -56,7 +56,7 @@ public class UserIOConsoleImpl implements UserIO{
         float input;
         do {
             System.out.println(prompt);
-            input = scanner.nextFloat();
+            input = Float.parseFloat(scanner.nextLine());
             inRange = input >= min && input <= max;
         } while (!inRange);
         return input;
@@ -64,7 +64,7 @@ public class UserIOConsoleImpl implements UserIO{
 
     public long readLong(String prompt) {
         System.out.println(prompt);
-        return scanner.nextLong();
+        return Long.parseLong(scanner.nextLine());
     }
 
     public long readLong(String prompt, long min, long max) {
@@ -72,7 +72,7 @@ public class UserIOConsoleImpl implements UserIO{
         long input;
         do {
             System.out.println(prompt);
-            input = scanner.nextLong();
+            input = Long.parseLong(scanner.nextLine());
             inRange = input >= min && input <= max;
         } while (!inRange);
         return input;
