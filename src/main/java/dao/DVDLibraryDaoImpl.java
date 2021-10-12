@@ -12,8 +12,8 @@ public class DVDLibraryDaoImpl implements DVDLibraryDao {
 
     }
 
-    public Map<String, DVD> loadDVDLibrary(String file) throws DVDLibraryDaoException, FileNotFoundException {
-        Scanner in = new Scanner(new BufferedReader(new FileReader(file)));
+    public void loadDVDLibrary(String file) throws DVDLibraryDaoException, FileNotFoundException {
+        Scanner in = new Scanner(new BufferedReader(new FileReader(file + ".txt")));
         Map<String, DVD> dvds = new HashMap<>();
         while (in.hasNextLine()) {
             DVD newDVD = new DVD();
@@ -22,7 +22,6 @@ public class DVDLibraryDaoImpl implements DVDLibraryDao {
             char[] currentLine = in.nextLine().toCharArray();
             for (int i = 0; i < currentLine.length; i++) {
                 if (currentLine[i] == ':' && currentLine[i - 1] == ':') {
-                    linePos++;
                     switch (linePos) {
                         case 0:
                             newDVD.setTitle(currentData);
@@ -53,38 +52,45 @@ public class DVDLibraryDaoImpl implements DVDLibraryDao {
                                         year = Integer.parseInt(currentDateValue);
                                     }
                                     pos++;
+                                    currentDateValue = "";
                                 } else {
                                     currentDateValue += currentData.toCharArray()[j];
                                 }
                             }
                             newDVD.setReleaseDate(day, month, year);
+                            break;
                         case 5:
                             newDVD.setUserRating(Integer.parseInt(currentData));
+                            break;
                         case 6:
                             newDVD.setUserRatingNote(currentData);
+                            break;
                     }
+                    linePos++;
+                    currentData = "";
                 } else if (currentLine[i] != ':') {
                     currentData += currentLine[i];
                 }
             }
             dvds.put(newDVD.getTitle(), newDVD);
         }
-        return dvds;
+        dvdLibrary = dvds;
     }
 
-    public void saveDVDLibrary(List<DVD> DVDLibrary, String file) throws DVDLibraryDaoException, IOException {
-        PrintWriter out = new PrintWriter(new FileWriter(file));
+    public void saveDVDLibrary(String file) throws DVDLibraryDaoException, IOException {
+        PrintWriter out = new PrintWriter(new FileWriter(file + ".txt"));
+        List<DVD> dvds = new ArrayList<>(dvdLibrary.values());
         for (DVD dvd : dvdLibrary.values()) {
             out.println(dvd.getTitle() + "::" + dvd.getDirector() + "::" + dvd.getStudio() + "::" + dvd.getMpaaRating() + "::" +
                     dvd.getReleaseDate().getDayOfMonth() + "/" + dvd.getReleaseDate().getMonthValue() + "/" + dvd.getReleaseDate().getYear() + "::" +
                     dvd.getUserRating().getRating() + "::" + dvd.getUserRating().getNote() + "::");
-            out.flush();
-            out.close();
         }
+        out.flush();
+        out.close();
     }
 
-    public List<DVD> getDvdLibrary() throws DVDLibraryDaoException {
-        return new ArrayList<>(dvdLibrary.values());
+    public Map<String, DVD> getDvdLibrary() throws DVDLibraryDaoException {
+        return dvdLibrary;
     }
 
     public DVD getDVD(String title) throws DVDLibraryDaoException {
@@ -101,7 +107,6 @@ public class DVDLibraryDaoImpl implements DVDLibraryDao {
 
     public void removeDVD(String title) throws DVDLibraryDaoException {
         dvdLibrary.remove(title);
-        System.out.println("Removed " + title);
     }
 
     public void editDVD(String title, DVD dvd) throws DVDLibraryDaoException {

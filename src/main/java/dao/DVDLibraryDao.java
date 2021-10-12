@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface DVDLibraryDao {
-    Map<String, DVD> loadDVDLibrary(String file) throws DVDLibraryDaoException, FileNotFoundException;
+    void loadDVDLibrary(String file) throws DVDLibraryDaoException, FileNotFoundException;
 
     void saveDVDLibrary(String file) throws DVDLibraryDaoException, IOException;
 
