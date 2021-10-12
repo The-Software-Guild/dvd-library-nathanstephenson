@@ -10,9 +10,9 @@ import java.util.Map;
 public interface DVDLibraryDao {
     Map<String, DVD> loadDVDLibrary(String file) throws DVDLibraryDaoException, FileNotFoundException;
 
-    void saveDVDLibrary(List<DVD> DVDLibrary, String file) throws DVDLibraryDaoException, IOException;
+    void saveDVDLibrary(String file) throws DVDLibraryDaoException, IOException;
 
-    List<DVD> getDvdLibrary() throws DVDLibraryDaoException;
+    Map<String, DVD> getDvdLibrary() throws DVDLibraryDaoException;
 
     DVD getDVD(String title) throws DVDLibraryDaoException;
 
