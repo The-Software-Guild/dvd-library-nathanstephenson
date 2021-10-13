@@ -4,6 +4,7 @@ import dao.DVDLibraryDao;
 import dao.DVDLibraryDaoException;
 import ui.DVDLibraryView;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -18,6 +19,10 @@ public class DVDLibraryController {
 
     public void run() throws DVDLibraryDaoException, IOException {
         boolean cont = true;
+        File f = new File("dvdlibrary.txt");
+        if(f.exists()){
+            dao.loadDVDLibrary("dvdlibrary");
+        }
         do {
             switch (view.menu()) {
                 case 1:
