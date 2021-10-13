@@ -1,8 +1,6 @@
 package dto;
 
-import javax.swing.text.DateFormatter;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class DVD {
     private String title;

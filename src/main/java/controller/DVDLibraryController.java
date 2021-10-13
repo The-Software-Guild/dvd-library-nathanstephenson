@@ -2,7 +2,6 @@ package controller;
 
 import dao.DVDLibraryDao;
 import dao.DVDLibraryDaoException;
-import dto.DVD;
 import ui.DVDLibraryView;
 
 import java.io.IOException;
