@@ -67,7 +67,11 @@ public class DVD {
         return userRating;
     }
 
-    public void setUserRating(int rating) { this.userRating.setRating(rating); }
+    public void setUserRating(int rating) {
+        this.userRating.setRating(rating);
+    }
 
-    public void setUserRatingNote(String note){ this.userRating.setNote(note); }
+    public void setUserRatingNote(String note) {
+        this.userRating.setNote(note);
+    }
 }

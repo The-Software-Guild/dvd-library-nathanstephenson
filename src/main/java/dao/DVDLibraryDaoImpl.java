@@ -15,7 +15,7 @@ public class DVDLibraryDaoImpl implements DVDLibraryDao {
     public void loadDVDLibrary(String file) throws DVDLibraryDaoException, FileNotFoundException {
         Scanner in = new Scanner(new BufferedReader(new FileReader(file + ".txt")));
         Map<String, DVD> dvds = new HashMap<>();
-        try{
+        try {
             while (in.hasNextLine()) {
                 DVD newDVD = new DVD();
                 int linePos = 0;
@@ -75,7 +75,7 @@ public class DVDLibraryDaoImpl implements DVDLibraryDao {
                 }
                 dvds.put(newDVD.getTitle(), newDVD);
             }
-        } catch(Exception e){
+        } catch (Exception e) {
             throw new DVDLibraryDaoException("Error loading from file.", e);
         }
         dvdLibrary = dvds;
@@ -84,13 +84,13 @@ public class DVDLibraryDaoImpl implements DVDLibraryDao {
     public void saveDVDLibrary(String file) throws DVDLibraryDaoException, IOException {
         PrintWriter out = new PrintWriter(new FileWriter(file + ".txt"));
         List<DVD> dvds = new ArrayList<>(dvdLibrary.values());
-        try{
+        try {
             for (DVD dvd : dvdLibrary.values()) {
                 out.println(dvd.getTitle() + "::" + dvd.getDirector() + "::" + dvd.getStudio() + "::" + dvd.getMpaaRating() + "::" +
                         dvd.getReleaseDate().getDayOfMonth() + "/" + dvd.getReleaseDate().getMonthValue() + "/" + dvd.getReleaseDate().getYear() + "::" +
                         dvd.getUserRating().getRating() + "::" + dvd.getUserRating().getNote() + "::");
             }
-        } catch(Exception e){
+        } catch (Exception e) {
             throw new DVDLibraryDaoException("Error saving to file.", e);
         }
         out.flush();
@@ -100,7 +100,7 @@ public class DVDLibraryDaoImpl implements DVDLibraryDao {
     public Map<String, DVD> getDvdLibrary() throws DVDLibraryDaoException {
         try {
             return dvdLibrary;
-        }catch(Exception e){
+        } catch (Exception e) {
             throw new DVDLibraryDaoException("Error retrieving DVD library.", e);
         }
     }
@@ -108,7 +108,7 @@ public class DVDLibraryDaoImpl implements DVDLibraryDao {
     public DVD getDVD(String title) throws DVDLibraryDaoException {
         try {
             return dvdLibrary.get(title);
-        } catch(Exception e){
+        } catch (Exception e) {
             throw new DVDLibraryDaoException("Error finding DVD.", e);
         }
     }
@@ -120,7 +120,7 @@ public class DVDLibraryDaoImpl implements DVDLibraryDao {
             } else {
                 System.out.println("This dvd '" + dvd.getTitle() + "' already exists in the library.");
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             throw new DVDLibraryDaoException("Error adding DVD.", e);
         }
     }
@@ -128,7 +128,7 @@ public class DVDLibraryDaoImpl implements DVDLibraryDao {
     public void removeDVD(String title) throws DVDLibraryDaoException {
         try {
             dvdLibrary.remove(title);
-        }catch(Exception e){
+        } catch (Exception e) {
             throw new DVDLibraryDaoException("Error removing DVD.", e);
         }
     }
@@ -136,7 +136,7 @@ public class DVDLibraryDaoImpl implements DVDLibraryDao {
     public void editDVD(String title, DVD dvd) throws DVDLibraryDaoException {
         try {
             dvdLibrary.replace(title, dvd);
-        }catch(Exception e){
+        } catch (Exception e) {
             throw new DVDLibraryDaoException("Error updating DVD.", e);
         }
     }

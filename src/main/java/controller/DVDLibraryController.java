@@ -20,7 +20,7 @@ public class DVDLibraryController {
     public void run() throws DVDLibraryDaoException, IOException {
         boolean cont = true;
         File f = new File("dvdlibrary.txt");
-        if(f.exists()){
+        if (f.exists()) {
             dao.loadDVDLibrary("dvdlibrary");
         }
         do {

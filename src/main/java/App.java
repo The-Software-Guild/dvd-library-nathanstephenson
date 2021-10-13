@@ -2,7 +2,6 @@ import controller.DVDLibraryController;
 
 import dao.DVDLibraryDaoException;
 import dao.DVDLibraryDaoImpl;
-import dto.DVD;
 import ui.DVDLibraryView;
 import ui.UserIO;
 import ui.UserIOConsoleImpl;
@@ -15,7 +14,7 @@ public class App {
 
         try {
             controller.run();
-        } catch(Exception e){
+        } catch (Exception e) {
             throw new DVDLibraryDaoException("There was an error.", e);
         }
     }
